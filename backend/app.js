@@ -52,7 +52,12 @@ app.post('/signin', celebrate({
 app.use(auth);
 
 app.get('/signout', (req, res) => {
-  res.status(200).clearCookie('jwt').send({ message: 'Выход' });
+  res.status(200).clearCookie('jwt', {
+    maxAge: 3600000,
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  }).send({ message: 'Выход' });
 });
 
 app.use('/users', userRouter);
