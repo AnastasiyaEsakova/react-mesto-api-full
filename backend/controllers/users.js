@@ -15,11 +15,11 @@ module.exports.getUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       const {
-        name, about, avatar, email,
+        name, about, avatar, email, _id,
       } = user;
       res.send({
         data: {
-          name, about, avatar, email,
+          name, about, avatar, email, _id,
         },
       });
     })
@@ -33,11 +33,11 @@ module.exports.getUserById = (req, res, next) => {
         throw new NewError('Пользователь по указанному _id не найден.', 404);
       }
       const {
-        name, about, avatar, email,
+        name, about, avatar, email, _id,
       } = user;
       res.send({
         data: {
-          name, about, avatar, email,
+          name, about, avatar, email, _id,
         },
       });
     })
@@ -49,20 +49,20 @@ module.exports.getUserById = (req, res, next) => {
 
 module.exports.createUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    name, about, avatar, email, password, _id,
   } = req.body;
   bcrypt
     .hash(password, 10)
     .then((hash) => {
       const result = User.create({
-        name, about, avatar, email, password: hash,
+        name, about, avatar, email, password: hash, _id,
       });
       return result;
     })
     .then(() => {
       res.status(200).send({
         data: {
-          name, about, avatar, email,
+          name, about, avatar, email, _id,
         },
       });
     })
@@ -87,11 +87,11 @@ module.exports.setUserInfo = (req, res, next) => {
   )
     .then((user) => {
       const {
-        avatar, email,
+        avatar, email, _id,
       } = user;
       res.status(200).send({
         data: {
-          name, about, avatar, email,
+          name, about, avatar, email, _id,
         },
       });
     })
@@ -113,11 +113,11 @@ module.exports.setAvatar = (req, res, next) => {
   )
     .then((user) => {
       const {
-        name, about, email,
+        name, about, email, _id,
       } = user;
       res.status(200).send({
         data: {
-          name, about, avatar, email,
+          name, about, avatar, email, _id,
         },
       });
     })
