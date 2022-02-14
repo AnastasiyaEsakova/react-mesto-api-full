@@ -52,6 +52,18 @@ export class Auth {
       .then((res) => this._handleReturnPromise(res))
       .then((data) => data);
   };
+  signOut = () => {
+    return fetch(`${this._baseUrl}/signout`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: 'include',
+    })
+    .then((res) => this._handleReturnPromise(res))
+    .then((data) => data);
+  }
 }
 const auth = new Auth("https://api.mesto.esakova.nomoredomains.xyz");
 export default auth;

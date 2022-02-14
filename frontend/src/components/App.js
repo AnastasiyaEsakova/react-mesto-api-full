@@ -230,10 +230,16 @@ function App() {
     }
   }
   function signOut() {
-    history.push("/sign-in");
-    setEmail("");
-    setLoggedIn(false);
-    localStorage.removeItem("token");
+    auth.signOut()
+      .then(() => {
+        history.push("/sign-in");
+        setEmail("");
+        setLoggedIn(false);
+        localStorage.removeItem("token");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   React.useEffect(() => {
