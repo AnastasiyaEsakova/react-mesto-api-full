@@ -1,0 +1,6 @@
+.popup__container_type_image{
+  background-color: transparent;
+  border-radius: 0;
+  max-width: 100%;
+  max-height: 100%;
+}

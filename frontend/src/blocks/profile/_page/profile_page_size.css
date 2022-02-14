@@ -1,0 +1,24 @@
+.profile_page_size{
+  max-width: calc(100% - 400px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 51px;
+}
+@media screen and (max-width: 1150px){
+  .profile_page_size{
+    max-width: calc(100% - 150px);
+  }
+}
+@media screen and (max-width: 852px){
+  .profile_page_size{
+    max-width: calc(100% - 50px);
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 350px){
+  .profile_page_size{
+    max-width: calc(100% - 38px);
+    margin-bottom: 36px;
+  }
+}

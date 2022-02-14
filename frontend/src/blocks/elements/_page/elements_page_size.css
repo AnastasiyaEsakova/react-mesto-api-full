@@ -1,0 +1,19 @@
+.elements_page_size{
+  max-width: calc(100% - 400px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 282px));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 361px));
+  gap: 20px 17px;
+  justify-content: center;
+}
+@media screen and (max-width: 1150px){
+  .elements_page_size{
+    max-width: calc(100% - 100px);
+    gap: 20px 30px;
+  }
+}
+@media screen and (max-width: 670px){
+  .elements_page_size{
+    max-width: calc(100% - 38px);
+  }
+}
