@@ -204,7 +204,6 @@ function App() {
       .then((res) => {
         if (res.token) {
           handleLogin();
-          // history.push("/");
         }
       })
       .catch((err) => {
@@ -234,7 +233,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     function handleTokenCheck() {
