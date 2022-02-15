@@ -205,7 +205,6 @@ function App() {
         if (res.token) {
           handleLogin();
           history.push("/");
-          handleTokenCheck();
         }
       })
       .catch((err) => {
@@ -234,8 +233,6 @@ function App() {
         history.push("/sign-in");
         setEmail("");
         setLoggedIn(false);
-        setCurrentUser({});
-        setCards([]);
         localStorage.removeItem("token");
       })
       .catch((err) => {
@@ -254,9 +251,9 @@ function App() {
       });
   }, []);
 
-  // React.useEffect(() => {
-  //   handleTokenCheck();
-  // }, [loggedIn]);
+  React.useEffect(() => {
+    handleTokenCheck();
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
