@@ -245,6 +245,7 @@ function App() {
             if (res) {
               handleLogin();
               setEmail(res.data.email);
+              setCurrentUser(res);
               history.push("/");
             }
           })
