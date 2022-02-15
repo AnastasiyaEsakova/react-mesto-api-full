@@ -220,7 +220,7 @@ function App() {
         .then((res) => {
           if (res) {
             setEmail(res.data.email);
-            setLoggedIn(true);
+            setCurrentUser(res);
             history.push("/");
           }
         })
@@ -235,6 +235,8 @@ function App() {
         history.push("/sign-in");
         setEmail("");
         setLoggedIn(false);
+        setCurrentUser({});
+        setCards([]);
         localStorage.removeItem("token");
       })
       .catch((err) => {
@@ -252,9 +254,10 @@ function App() {
         console.log(err);
       });
   }, []);
+
   React.useEffect(() => {
     handleTokenCheck();
-  }, [loggedIn]);
+  });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
