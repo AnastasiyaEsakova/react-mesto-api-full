@@ -204,7 +204,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           handleLogin();
-          history.push("/");
+          // history.push("/");
         }
       })
       .catch((err) => {

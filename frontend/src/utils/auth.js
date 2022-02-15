@@ -49,6 +49,7 @@ export class Auth {
       credentials: 'include',
     })
       .then((res) => this._handleReturnPromise(res))
+      .then((data) => data);
   };
   signOut = () => {
     return fetch(`${this._baseUrl}/signout`, {
