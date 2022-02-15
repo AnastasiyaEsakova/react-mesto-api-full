@@ -11,8 +11,8 @@ function EditProfilePopup(props) {
   const { handleChange, errors, isValid, resetForm, setIsValid} = useFormAndValidation()
 
   React.useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
+    setName(currentUser.data.name);
+    setDescription(currentUser.data.about);
     resetForm();
     setIsValid(true);
   }, [currentUser, props.isOpen]);

@@ -35,12 +35,11 @@ export class Auth {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
-          // cookies.set('jwt', data.token)
         }
         return data;
       });
   };
-  getContent = (token) => {
+  getContent = () => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
@@ -50,7 +49,6 @@ export class Auth {
       credentials: 'include',
     })
       .then((res) => this._handleReturnPromise(res))
-      .then((data) => data);
   };
   signOut = () => {
     return fetch(`${this._baseUrl}/signout`, {

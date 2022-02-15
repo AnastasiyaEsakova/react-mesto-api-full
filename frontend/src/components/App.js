@@ -200,12 +200,12 @@ function App() {
       });
   }
   function handleLoginSubmit(password, email) {
-    auth
-      .authorize(password, email)
+    auth.authorize(password, email)
       .then((res) => {
         if (res.token) {
           handleLogin();
           history.push("/");
+          handleTokenCheck();
         }
       })
       .catch((err) => {
@@ -215,8 +215,7 @@ function App() {
   }
   function handleTokenCheck() {
     if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      auth.getContent(token)
+      auth.getContent()
         .then((res) => {
           if (res) {
             setEmail(res.data.email);
@@ -253,11 +252,11 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  React.useEffect(() => {
-    handleTokenCheck();
   }, [loggedIn]);
+
+  // React.useEffect(() => {
+  //   handleTokenCheck();
+  // }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
