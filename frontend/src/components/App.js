@@ -202,6 +202,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           handleLogin();
+          history.push("/");
         }
       })
       .catch((err) => {
@@ -222,7 +223,7 @@ function App() {
       })
   }
 
-  React.useEffect(() => {
+  function getContent () {
     Promise.all([api.getInitialCards(), api.getProfileInfo()])
       .then((res) => {
         setCards(res[0]);
@@ -231,7 +232,11 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, [loggedIn]);
+  }
+
+  React.useEffect(() => {
+    getContent();
+  }, []);
 
   React.useEffect(() => {
     function handleTokenCheck() {
@@ -251,6 +256,7 @@ function App() {
     }
 
     handleTokenCheck();
+    getContent();
   }, [loggedIn, history]);
 
   return (
