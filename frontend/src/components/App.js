@@ -243,6 +243,7 @@ function App() {
         auth.getContent()
           .then((res) => {
             if (res) {
+              handleLogin();
               setEmail(res.data.email);
               setCurrentUser(res);
               history.push("/");
