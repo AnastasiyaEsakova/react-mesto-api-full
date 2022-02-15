@@ -11,11 +11,11 @@ function EditProfilePopup(props) {
   const { handleChange, errors, isValid, resetForm, setIsValid} = useFormAndValidation()
 
   React.useEffect(() => {
-    setName(currentUser.data.name);
-    setDescription(currentUser.data.about);
+    setName(currentUser.data?.name || '');
+    setDescription(currentUser.data?.about || '');
     resetForm();
     setIsValid(true);
-  }, [currentUser, props.isOpen]);
+  }, [currentUser, props.isOpen, resetForm, setIsValid]);
 
   function handleChangeName(e) {
     setName(e.target.value);

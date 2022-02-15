@@ -212,21 +212,6 @@ function App() {
         console.log(err);
       });
   }
-  function handleTokenCheck() {
-    if (localStorage.getItem("token")) {
-      auth.getContent()
-        .then((res) => {
-          if (res) {
-            setEmail(res.data.email);
-            setCurrentUser(res);
-            history.push("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
   function signOut() {
     auth.signOut()
       .then(() => {
@@ -252,8 +237,24 @@ function App() {
   }, []);
 
   React.useEffect(() => {
+    function handleTokenCheck() {
+      if (localStorage.getItem("token")) {
+        auth.getContent()
+          .then((res) => {
+            if (res) {
+              setEmail(res.data.email);
+              setCurrentUser(res);
+              history.push("/");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+
     handleTokenCheck();
-  }, [loggedIn]);
+  }, [loggedIn, history]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
