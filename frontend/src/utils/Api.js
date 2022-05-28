@@ -92,7 +92,8 @@ export class Api{
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.esakova.nomoredomains.xyz',
+  // baseUrl: 'https://api.mesto.esakova.nomoredomains.xyz',
+  baseUrl: 'http://localhost:8080',
   headers: {
     'Content-Type': 'application/json',
   }

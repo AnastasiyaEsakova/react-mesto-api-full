@@ -64,5 +64,6 @@ export class Auth {
     .then((data) => data);
   }
 }
-const auth = new Auth("https://api.mesto.esakova.nomoredomains.xyz");
+// const auth = new Auth("https://api.mesto.esakova.nomoredomains.xyz");
+const auth = new Auth("http://localhost:8080");
 export default auth;

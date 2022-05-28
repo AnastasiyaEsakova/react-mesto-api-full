@@ -2,6 +2,7 @@ const allowedCors = [
   'https://mesto.esakova.nomoredomains.work',
   'http://mesto.esakova.nomoredomains.work',
   'mesto.esakova.nomoredomains.work',
+  'http://localhost:3000',
 ];
 
 module.exports.checkCors = (req, res, next) => {
